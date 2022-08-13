@@ -1,0 +1,4 @@
+-- string pro:
+$processor$: simple_processor
+
+-- ftd.text: $pro

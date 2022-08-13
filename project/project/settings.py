@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+FPM_PACKAGE_ROOT = os.path.join(BASE_DIR, "ui")
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,6 +66,13 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+    },
+    {
+        "BACKEND": "ftd_django.TemplateBackend",
+        "DIRS": ["ui"], # <- this is the directory where you would keep your ftd files
+        "OPTIONS": {
+            "PROCESSORS": ["app.processor.simple_processor"] # <- mention your processors here
+        }
     },
 ]
 
